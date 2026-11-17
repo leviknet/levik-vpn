@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "sequence": 2,
-  "issuedAt": "2026-11-06T15:10:23Z",
+  "sequence": 3,
+  "issuedAt": "2026-11-17T20:10:52Z",
   "apiOrigins": [
     "https://api.cloudnote-sync.xyz",
     "https://api.leviknet.org",

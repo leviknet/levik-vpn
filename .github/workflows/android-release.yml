@@ -95,8 +95,9 @@ jobs:
             printf 'ERROR: invalid release scope.\n' >&2
             exit 1
           fi
-          if [[ "${RELEASE_ACTOR}" != "${REPOSITORY_OWNER}" ]]; then
-            printf 'ERROR: only the repository owner may dispatch a production release.\n' >&2
+          if [[ "${RELEASE_ACTOR}" != "leviknet-bot[bot]" ||
+                "${REPOSITORY_OWNER}" != "leviknet" ]]; then
+            printf 'ERROR: only the release bot may dispatch a production release.\n' >&2
             exit 1
           fi
           if [[ "${RELEASE_REPOSITORY}" != "leviknet/levik-vpn" ]]; then

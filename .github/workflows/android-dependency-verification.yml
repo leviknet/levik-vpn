@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Restrict maintenance workflow to the repository owner
+      - name: Restrict maintenance workflow to the release bot
         shell: bash
         env:
           MAINTENANCE_ACTOR: ${{ github.actor }}
@@ -30,9 +30,10 @@ jobs:
           MAINTENANCE_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
-          if [[ "${MAINTENANCE_ACTOR}" != "${REPOSITORY_OWNER}" ||
+          if [[ "${MAINTENANCE_ACTOR}" != "leviknet-bot[bot]" ||
+                "${REPOSITORY_OWNER}" != "leviknet" ||
                 "${MAINTENANCE_REPOSITORY}" != "leviknet/levik-vpn" ]]; then
-            printf 'ERROR: dependency verification maintenance is owner-only.\n' >&2
+            printf 'ERROR: dependency verification maintenance is bot-only.\n' >&2
             exit 1
           fi
 
